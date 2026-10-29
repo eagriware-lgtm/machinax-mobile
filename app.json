@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "MachinaX Mobile",
+    "slug": "machinax-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0B1020"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ebs.machinaxmobile"
+    },
+    "android": {
+      "package": "com.ebs.machinaxmobile",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
