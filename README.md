@@ -11,7 +11,7 @@ A beginner-friendly, build-first CAD app from The Epic Builders (EBS).
 
 **Honest status:** this is a functional UI prototype, not a real 3D CAD engine yet. The next milestone is a touch-friendly 3D workspace, then transforms, exact dimensions, and project save/load.
 
-## Run locally
+## Run on mobile and web
 Install Node.js LTS, then run:
 
 ```bash
@@ -19,7 +19,9 @@ npm install
 npx expo start
 ```
 
-Scan the QR code with Expo Go or use a simulator. For type checking, run `npm run typecheck`.
+Scan the QR code with Expo Go for a phone, or press `w` in the Expo terminal to open the web version. The interface switches to a wider two-column workshop on desktop and a touch-friendly stacked layout on phones. For type checking, run `npm run typecheck`.
+
+To start directly in a browser, run `npm run web`.
 
 ## EAS builds
 Install EAS CLI and sign in:
