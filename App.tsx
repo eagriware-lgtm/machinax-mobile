@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from "react-native";
 
 type PartKind = "Cube" | "Cylinder" | "Wheel";
@@ -25,6 +26,8 @@ const palette = {
 };
 
 export default function App() {
+  const { width } = useWindowDimensions();
+  const isWide = width >= 900;
   const [mode, setMode] = useState<"Inventor" | "Engineer">("Inventor");
   const [parts, setParts] = useState<Part[]>([
     { id: 1, kind: "Cube", size: "2 × 2 × 2" },
@@ -88,6 +91,8 @@ export default function App() {
           <View style={styles.liveBadge}><View style={styles.liveDot} /><Text style={styles.liveText}>EDITING</Text></View>
         </View>
 
+        <View style={[styles.editorLayout, isWide && styles.editorLayoutWide]}>
+          <View style={styles.editorColumn}>
         <View style={styles.workspace}>
           <View style={styles.workspaceTop}>
             <Text style={styles.workspaceLabel}>BUILD SPACE</Text>
@@ -129,6 +134,8 @@ export default function App() {
           </View>
         </View>
 
+          </View>
+          <View style={styles.editorColumn}>
         <View style={styles.sectionHeading}>
           <View>
             <Text style={styles.sectionTitle}>Parts list</Text>
@@ -169,6 +176,9 @@ export default function App() {
           </View>
         )}
 
+          </View>
+        </View>
+
         <View style={styles.footer}>
           <Text style={styles.footerTitle}>MADE FOR CURIOUS MINDS ⚡</Text>
           <Text style={styles.footerBody}>A first step toward a real, touch-friendly CAD editor.</Text>
@@ -191,7 +201,10 @@ function PartButton({ emoji, label, hint, onPress }: { emoji: string; label: str
 
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: palette.background },
-  page: { padding: 20, paddingBottom: 42, maxWidth: 760, width: "100%", alignSelf: "center" },
+  page: { padding: 20, paddingBottom: 42, maxWidth: 1240, width: "100%", alignSelf: "center" },
+  editorLayout: { flexDirection: "column", gap: 18 },
+  editorLayoutWide: { flexDirection: "row", alignItems: "flex-start" },
+  editorColumn: { flex: 1, minWidth: 0, width: "100%" },
   header: { flexDirection: "row", alignItems: "center", marginBottom: 28, gap: 10 },
   brandMark: { width: 42, height: 42, borderRadius: 13, backgroundColor: palette.blue, alignItems: "center", justifyContent: "center" },
   brandGlyph: { color: "#FFFFFF", fontSize: 24, fontWeight: "900" },
